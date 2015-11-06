@@ -167,8 +167,8 @@ describe("convertTime", function() {
         expect(result).to.equal('2:00 AM');
       });
 
-      it("translates 2:08 to 2:8 AM", function() {
-        var result = convertTime('2:08', 'hh:mm A');
+      it("translates 2:8 to 2:8 AM", function() {
+        var result = convertTime('2:8', 'hh:mm A');
         expect(result).to.equal('2:8 AM');
       });
     });

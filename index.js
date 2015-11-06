@@ -10,14 +10,6 @@ module.exports = function (time, format) {
     }
   }
 
-  function maybeUnshiftZero(str) {
-    if (str.length === 2 && str[0] === '0') {
-      return str[1];
-    } else {
-      return str;
-    }
-  }
-
   function getPeriod(hour) {
     if (parseInt(hour) >= 12) {
       return 'pm';
@@ -67,14 +59,14 @@ module.exports = function (time, format) {
     if (parseInt(hour) > 12) {
       return format.replace('hh', parseInt(hour)-12)
                    .replace('HH', maybePrependZero(hour))
-                   .replace('mm', maybeUnshiftZero(minute))
+                   .replace('mm', minute)
                    .replace('MM', maybePrependZero(minute))
                    .replace('a', 'pm')
                    .replace('A', 'PM');
     } else {
       return format.replace('hh', hour)
                    .replace('HH', maybePrependZero(hour))
-                   .replace('mm', maybeUnshiftZero(minute))
+                   .replace('mm', minute)
                    .replace('MM', maybePrependZero(minute))
                    .replace('a', getPeriod(hour))
                    .replace('A', getPeriod(hour).toUpperCase());
