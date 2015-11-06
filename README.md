@@ -48,8 +48,8 @@ the front. (e.g. `9` becomes `09`)
 
 Default values for format are:
 
-`hh:MM` for 12-hour to 24-hour conversion.
-`hh:MM a` for 24-hour to 12-hour conversion.
+* `hh:MM` for 12-hour to 24-hour conversion.
+* `hh:MM a` for 24-hour to 12-hour conversion.
 
 
 ## License
