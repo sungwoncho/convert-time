@@ -126,9 +126,35 @@ describe("convertTime", function() {
   });
 
   describe("24-hour time to 12-hour time", function() {
-    // it("translates 2:00 to 2:00AM", function() {
-    //   var result = convertTime('2:00');
-    //   expect(result).to.equal('12:00');
-    // });
+    describe("without format", function() {
+      it("translates 2:00 to 2:00 am", function() {
+        var result = convertTime('2:00');
+        expect(result).to.equal('2:00 am');
+      });
+
+      it("translates 12:00 to 12:00 pm", function() {
+        var result = convertTime('12:00');
+        expect(result).to.equal('12:00 pm');
+      });
+
+      it("translates 15:00 to 3:00 pm", function() {
+        var result = convertTime('15:00');
+        expect(result).to.equal('3:00 pm');
+      });
+    });
+
+    describe("with format 'HH:mm a'", function() {
+      it("translates 2:00 to 02:00 am", function() {
+        var result = convertTime('2:00', 'HH:mm a');
+        expect(result).to.equal('02:00 am');
+      });
+    });
+
+    describe("with format 'hh:mm A'", function() {
+      it("translates 2:00 to 02:00 AM", function() {
+        var result = convertTime('2:00', 'hh:mm A');
+        expect(result).to.equal('2:00 AM');
+      });
+    });
   });
 });
