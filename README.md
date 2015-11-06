@@ -1,5 +1,7 @@
 # Convert-time
 
+[![Build Status](https://travis-ci.org/sungwoncho/convert-time.svg?branch=master)](https://travis-ci.org/sungwoncho/convert-time)
+
 Convert a string between 12-hour time and 24-hour time with customizable format.
 
 
@@ -36,7 +38,7 @@ If `time` is in 12-hour time, convert it to 24-hour time, and vice-versa. Use
 values are:
 
 * `hh` - Hour. It can be one or two digits.
-* `HH` - Hour. It is always two digits. If one digit, '0' is appended in
+* `HH` - Hour. It is always two digits. If one digit, `0` is appended in
 the front. (e.g. `3` becomes `03`)
 * `mm` - Minute.
 * `a` - Period. `am` or `pm`.
