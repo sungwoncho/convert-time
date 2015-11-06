@@ -46,6 +46,11 @@ the front. (e.g. `9` becomes `09`)
 * `a` - Period. `am` or `pm`.
 * `A` - Capitalized period. `AM` or `PM`.
 
+Default values for format are:
+
+`hh:MM` for 12-hour to 24-hour conversion.
+`hh:MM a` for 24-hour to 12-hour conversion.
+
 
 ## License
 
