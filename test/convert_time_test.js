@@ -123,6 +123,17 @@ describe("convertTime", function() {
         expect(result).to.equal('02:15');
       });
     });
+
+    describe("with format 'hh:MM'", function() {
+      it("translates 2:8 am to 02:08", function() {
+        var result = convertTime('2:8 am', 'hh:MM');
+        expect(result).to.equal('2:08');
+      });
+      it("translates 3:8 pm to 02:08", function() {
+        var result = convertTime('3:8 pm', 'hh:MM');
+        expect(result).to.equal('15:08');
+      });
+    });
   });
 
   describe("24-hour time to 12-hour time", function() {
@@ -143,17 +154,29 @@ describe("convertTime", function() {
       });
     });
 
-    describe("with format 'HH:mm a'", function() {
+    describe("with format 'HH:MM a'", function() {
       it("translates 2:00 to 02:00 am", function() {
-        var result = convertTime('2:00', 'HH:mm a');
+        var result = convertTime('2:00', 'HH:MM a');
         expect(result).to.equal('02:00 am');
       });
     });
 
-    describe("with format 'hh:mm A'", function() {
-      it("translates 2:00 to 02:00 AM", function() {
-        var result = convertTime('2:00', 'hh:mm A');
+    describe("with format 'hh:MM A'", function() {
+      it("translates 2:00 to 2:00 AM", function() {
+        var result = convertTime('2:00', 'hh:MM A');
         expect(result).to.equal('2:00 AM');
+      });
+
+      it("translates 2:08 to 2:8 AM", function() {
+        var result = convertTime('2:08', 'hh:mm A');
+        expect(result).to.equal('2:8 AM');
+      });
+    });
+
+    describe("with format 'hh:MM A'", function() {
+      it("translates 2:8 to 2:08 AM", function() {
+        var result = convertTime('2:8', 'hh:MM A');
+        expect(result).to.equal('2:08 AM');
       });
     });
   });

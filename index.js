@@ -2,11 +2,19 @@ module.exports = function (time, format) {
   var TWELVE_HOUR_REGEX = /(\d{1,2})\s*:?\s*(\d{0,2})\s*(a\.?m\.?|p\.?m\.?)/i;
   var TWENTY_FOUR_HOUR_REGEX = /(\d{1,2})\s*:\s*(\d{1,2})/i;
 
-  function getTwoDigitHour(hour) {
-    if (hour.length === 1) {
-      return '0' + hour;
+  function maybePrependZero(str) {
+    if (str.length === 1) {
+      return '0' + str;
     } else {
-      return hour;
+      return str;
+    }
+  }
+
+  function maybeUnshiftZero(str) {
+    if (str.length === 2 && str[0] === '0') {
+      return str[1];
+    } else {
+      return str;
     }
   }
 
@@ -29,16 +37,18 @@ module.exports = function (time, format) {
 
     // Default argument for format
     if (! format) {
-      format = 'hh:mm';
+      format = 'hh:MM';
     }
 
     if (period == 'pm' && hour !== '12') {
       return format.replace('hh', parseInt(hour)+12)
-                   .replace('mm', minute);
+                   .replace('mm', minute)
+                   .replace('MM', maybePrependZero(minute));
     } else {
       return format.replace('hh', hour)
-                   .replace('HH', getTwoDigitHour(hour))
-                   .replace('mm', minute);
+                   .replace('HH', maybePrependZero(hour))
+                   .replace('mm', minute)
+                   .replace('MM', maybePrependZero(minute));
     }
   }
 
@@ -51,19 +61,21 @@ module.exports = function (time, format) {
 
     // Default argument for format
     if (! format) {
-      format = 'hh:mm a';
+      format = 'hh:MM a';
     }
 
     if (parseInt(hour) > 12) {
       return format.replace('hh', parseInt(hour)-12)
-                   .replace('HH', getTwoDigitHour(hour))
-                   .replace('mm', minute)
+                   .replace('HH', maybePrependZero(hour))
+                   .replace('mm', maybeUnshiftZero(minute))
+                   .replace('MM', maybePrependZero(minute))
                    .replace('a', 'pm')
                    .replace('A', 'PM');
     } else {
       return format.replace('hh', hour)
-                   .replace('HH', getTwoDigitHour(hour))
-                   .replace('mm', minute)
+                   .replace('HH', maybePrependZero(hour))
+                   .replace('mm', maybeUnshiftZero(minute))
+                   .replace('MM', maybePrependZero(minute))
                    .replace('a', getPeriod(hour))
                    .replace('A', getPeriod(hour).toUpperCase());
     }

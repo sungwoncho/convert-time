@@ -40,7 +40,9 @@ values are:
 * `hh` - Hour. It can be one or two digits.
 * `HH` - Hour. It is always two digits. If one digit, `0` is appended in
 the front. (e.g. `3` becomes `03`)
-* `mm` - Minute.
+* `mm` - Minute. It can be one or two digits.
+* `MM` - Minute. It is always two digits. If one digit, `0` is appended in
+the front. (e.g. `9` becomes `09`)
 * `a` - Period. `am` or `pm`.
 * `A` - Capitalized period. `AM` or `PM`.
 
