@@ -1,0 +1,28 @@
+{
+  "name": "convert-time",
+  "version": "0.1.0",
+  "description": "Convert 24-hour time to 12-hour time and vice versa",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha ./test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sungwoncho/convert-time.git"
+  },
+  "keywords": [
+    "convert",
+    "time",
+    "clock"
+  ],
+  "author": "Sung Won Cho <mikeswcho@gmail.com> (https://sungwoncho.io/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sungwoncho/convert-time/issues"
+  },
+  "homepage": "https://github.com/sungwoncho/convert-time#readme",
+  "devDependencies": {
+    "chai": "^3.4.0",
+    "mocha": "^2.3.3"
+  }
+}
